@@ -1,0 +1,36 @@
+﻿@model Insurance.Models.Policy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Policy</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PolicyType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PolicyType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PolicyDuration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PolicyDuration)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PolicyPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PolicyPrice)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PolicyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

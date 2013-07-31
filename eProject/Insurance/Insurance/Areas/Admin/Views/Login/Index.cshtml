@@ -1,0 +1,83 @@
+﻿@model Insurance.Areas.Admin.Models.AdminLogin
+@{
+    ViewBag.Title = "Admin CP - Login";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Areas/Admin/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/admin/Content/bootstrap")
+    @Styles.Render("~/admin/Content/plugins/icheck")
+    @Styles.Render("~/admin/Content/style")
+    @Styles.Render("~/admin/Content/themes")
+    @Scripts.Render("~/bundles/modernizr")
+    	<!-- jQuery -->
+	<script src="~/Areas/Admin/Scripts/jquery.min.js"></script>
+	
+	<!-- Nice Scroll -->
+	<script src="~/Areas/Admin/Scripts/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<!-- Validation -->
+	<script src="~/Areas/Admin/Scripts/plugins/validation/jquery.validate.min.js"></script>
+	<script src="~/Areas/Admin/Scripts/plugins/validation/additional-methods.min.js"></script>
+	<!-- icheck -->
+	<script src="~/Areas/Admin/Scripts/plugins/icheck/jquery.icheck.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="~/Areas/Admin/Scripts/bootstrap.min.js"></script>
+	<script src="~/Areas/Admin/Scripts/eakroko.min.js"></script>
+
+	<!--[if lte IE 9]>
+		<script src="~/Areas/Admin/Scripts/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+	<![endif]-->
+	
+
+</head>
+    
+<body class='login'>
+	<div class="wrapper">
+		<h1><a href="index.html"><img src="~/Areas/Admin/Content/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">FLAT</a></h1>
+		<div class="login-body">
+			<h2>SIGN IN</h2>
+            @using (Html.BeginForm("DoLogin", "Login", FormMethod.Post, new { @class="form-validate", @id="test" }))
+            {
+                @Html.AntiForgeryToken()
+                if (!Html.ViewData.ModelState.IsValid){
+                <div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						@Html.ValidationSummary()
+				</div>
+                }
+                
+			<!--<form action="index.html" method='get' class='form-validate' id="test">-->
+				<div class="control-group">
+					<div class="email controls">
+                        @Html.TextBoxFor(x => x.UserName, new { @class="input-block-level", data_rule_required="true", placeholder="User Name" })
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="pw controls">
+						@Html.TextBoxFor(x => x.Password, new { type="password", @class="input-block-level", data_rule_required="true", placeholder="Password" })
+					</div>
+				</div>
+				<div class="submit">
+					<div class="remember">
+                        &nbsp;
+					</div>
+					<input type="submit" value="Sign me in" class='btn btn-primary'>
+				</div>
+            }
+			<div class="forget">
+				&nbsp;
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

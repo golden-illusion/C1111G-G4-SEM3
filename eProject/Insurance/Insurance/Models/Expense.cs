@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Insurance.Models
 {
-    [Table("CompanyExpenses")]
+    [Table("Expenses")]
     public class Expense
     {
         [Key]

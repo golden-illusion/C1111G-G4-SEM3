@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Insurance.Models;
+using InSurance.App_Start;
 
 
 namespace Insurance
@@ -19,6 +20,7 @@ namespace Insurance
     {
         protected void Application_Start()
         {
+            WebSecurityConfig.RegisterWebSecurity();
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

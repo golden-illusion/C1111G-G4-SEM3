@@ -1,0 +1,31 @@
+﻿@model LocalPasswordModel
+@{
+    ViewBag.Title = "Change Password";
+}
+
+<div class="manage-content clearfix">
+    <div class="manage-sidebar place-left">
+        @if (ViewBag.HasLocalPassword)
+        {
+            @Html.Partial("_ChangePasswordPartial")
+        }
+        else
+        { 
+            @Html.Partial("_SetPasswordPartial")
+        }
+    </div>
+    <div class="manage-img place-right clearfix">
+        <img src="~/Images/img-security.jpg" />
+        <div class="text bg-color-blue fg-color-white" style="padding: 20px; height: 100px;">
+            <h2 style="color: #FFF;">Send from an alias</h2>
+            <p>Pick the address you use for the right occasion. </p>
+        </div>
+    </div>
+</div>
+
+@*<section id="externalLogins">
+    @Html.Action("RemoveExternalLogins")
+
+    <h3>Add an external login</h3>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@

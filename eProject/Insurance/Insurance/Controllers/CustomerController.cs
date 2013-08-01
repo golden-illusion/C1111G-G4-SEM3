@@ -17,52 +17,6 @@ namespace Insurance.Controllers
         private InsuranceContext db = new InsuranceContext();
 
         //
-        // GET: /Customer/
-
-        public ActionResult Index()
-        {
-            return View(db.Customers.ToList());
-        }
-
-        //
-        // GET: /Customer/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
-        //
-        // GET: /Customer/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Customer/Create
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(customer);
-        }
-
-        //
         // GET: /Customer/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -90,33 +44,6 @@ namespace Insurance.Controllers
             }
             return View(customer);
         }
-
-        //
-        // GET: /Customer/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
-        //
-        // POST: /Customer/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
 
         //
         // GET: /Account/Login
@@ -180,8 +107,7 @@ namespace Insurance.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { CustomerName = model.CustomerName, CustomerAddress = model.CustomerAddress, CustomerPhone = model.CustomerPhone });
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

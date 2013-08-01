@@ -19,11 +19,6 @@ namespace Insurance.Models
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "Password")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Required]
         [Display(Name = "Full Name")]
         [StringLength(40, ErrorMessage = "The {0} have must be at least {2} characters long.", MinimumLength = 2)]
         public string CustomerName { get; set; }

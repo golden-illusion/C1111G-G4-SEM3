@@ -1,0 +1,55 @@
+﻿@model Insurance.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<div class="content">
+    <div class="layout">
+        <div class="row-item col-1_4" style="margin: 20px auto 20px 350px;">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationSummary(true)
+                    <div class="message-close icon-remove"></div>
+                </div>
+
+                <div class="input-wrap m-full-width">
+                    <i class="icon-user"></i>
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "field-name", placeholder = "User Name (require)" })
+                </div>
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.UserName)
+                    <div class="message-close icon-remove"></div>
+                </div>
+                <div class="input-wrap m-full-width">
+                    <i class="icon-lock"></i>
+                    @Html.PasswordFor(model => model.Password, new { @class = "field-name", placeholder = "Password (require)" })
+                </div>
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.Password)
+                    <div class="message-close icon-remove"></div>
+                </div>
+                <div class="m-full-width" style="margin-bottom: 10px;">
+                    @Html.CheckBoxFor(model => model.RememberMe)
+                    @Html.LabelFor(model => model.RememberMe)
+                </div>
+                <div class="m-full-width">
+                    <input class="btn-submit btn colored" type="submit" value="Login" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.message-error').each(function () {
+            });
+        });
+    </script>
+}

@@ -26,10 +26,6 @@ namespace Insurance.Models
         [Display(Name = "Price")]
         public decimal PolicyPrice { get; set; }
 
-        //public int BillNo { get; set; }
-        public virtual ICollection<Bill> Bills { get; set; }
-
-        //public int CustPolicyId { get; set; }
         public virtual ICollection<CustomerPolicy> CustomerPolicies { get; set; }
     }
 }

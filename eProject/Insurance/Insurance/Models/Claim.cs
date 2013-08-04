@@ -14,9 +14,6 @@ namespace Insurance.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int ClaimId { get; set; }
 
-        //[ForeignKey("CustPolicyId")]
-        public int CustPolicyId { get; set; }
-
         [Required]
         [Display(Name = "Accident Place")]
         public string AccidentPlace { get; set; }
@@ -32,6 +29,8 @@ namespace Insurance.Models
         [Required]
         [Display(Name = "Claimable Amount")]
         public decimal ClaimableAmount { get; set; }
+
+        public int CustPolicyId { get; set; }
 
         public virtual CustomerPolicy CustomerPolicy { get; set; }
     }

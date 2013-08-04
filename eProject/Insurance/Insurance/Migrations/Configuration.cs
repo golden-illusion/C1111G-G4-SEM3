@@ -1,5 +1,7 @@
 namespace Insurance.Migrations
 {
+    using Insurance.Areas.Admin.Models;
+    using InSurance.App_Start;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -10,23 +12,17 @@ namespace Insurance.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            //AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Insurance.Models.InsuranceContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Admins.AddOrUpdate<Admin>(
+                    p => p.UserName,
+                    new Admin { UserName = "Admin", Password = "E10ADC3949BA59ABBE56E057F20F883E" }
+                );
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            WebSecurityConfig.RegisterWebSecurity();
         }
     }
 }

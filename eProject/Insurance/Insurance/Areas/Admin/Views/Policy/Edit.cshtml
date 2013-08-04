@@ -1,10 +1,18 @@
 ﻿@model Insurance.Models.Policy
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Edit Policy";
 }
-
-<h2>Edit</h2>
+@section breadcrumbs {
+    <li>
+		<a href="~/Admin/Policy/">Policy</a>
+        <i class="icon-angle-right"></i>
+	</li>
+    <li>
+		<a href="~/Admin/Policy/">Edit Policy</a>
+	</li>
+}
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)

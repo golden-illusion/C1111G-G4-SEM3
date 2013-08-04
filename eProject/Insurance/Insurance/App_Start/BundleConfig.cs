@@ -9,6 +9,13 @@ namespace Insurance
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            // Use the development version of Modernizr to develop with and learn from. Then, when you're
+            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/modernizr-*"));
+
+
             /**
              * ***************************
              * Bundles for Admin Site ****
@@ -85,22 +92,32 @@ namespace Insurance
              * ***************************
              **/
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            /**
+             * ***************************
+             * Client ********************
+             * ***************************
+             **/
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js"));
+            bundles.Add(new ScriptBundle("~/bundles/slider").Include(
+                        "~/Scripts/jquery.themepunch.plugins.min.js",
+                        "~/Scripts/jquery.themepunch.revolution.min.js",
+                        "~/Scripts/revolution-slider-options.js"));
+            bundles.Add(new ScriptBundle("~/bundles/prettyPhoto").Include("~/Scripts/jquery.prettyPhoto.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            bundles.Add(new StyleBundle("~/Content/main").Include("~/Content/css/main.css"));
+            bundles.Add(new StyleBundle("~/Content/responsive").Include("~/Content/css/responsive.css"));
+            bundles.Add(new StyleBundle("~/Content/prettyPhoto").Include("~/Content/css/prettyPhoto.css"));
+            bundles.Add(new StyleBundle("~/Content/settings").Include("~/Content/css/settings.css"));
+            bundles.Add(new StyleBundle("~/Content/turquoise").Include("~/Content/color-scheme/turquoise.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            /**
+             * ***************************
+             * End ***********************
+             * ***************************
+             **/
 
             BundleTable.EnableOptimizations = true;
         }

@@ -14,9 +14,6 @@ namespace Insurance.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int VehicleId { get; set; }
 
-        //[ForeignKey("CustomerId")]
-        public int CustomerId { get; set; }
-
         [Required]
         [Display(Name = "Vehicle")]
         public string VehicleName { get; set; }
@@ -46,6 +43,8 @@ namespace Insurance.Models
         [Required]
         [Display(Name = "Warranty")]
         public string VehicleWarranty { get; set; }
+
+        public int CustomerId { get; set; }
 
         public virtual Customer Customer { get; set; }
 

@@ -7,17 +7,11 @@ using System.Web;
 
 namespace Insurance.Models
 {
-    [Table("Billings")]
+    [Table("Bills")]
     public class Bill
     {
         [Key]
         public int BillNo { get; set; }
-
-        //[ForeignKey("VehicleId")]
-        public int VehicleId { get; set; }
-
-        //[ForeignKey("PolicyId")]
-        public int PolicyId { get; set; }
 
         [Required]
         [Display(Name = "Customer Prove")]
@@ -32,8 +26,8 @@ namespace Insurance.Models
         [Display(Name = "Amount")]
         public decimal Amount { get; set; }
 
-        public virtual Policy Policy { get; set; }
+        public int CustPolicyId { get; set; }
 
-        public virtual Vehicle Vehicle { get; set; }
+        public virtual CustomerPolicy CustomerPolicy { get; set; }
     }
 }

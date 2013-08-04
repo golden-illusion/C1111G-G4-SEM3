@@ -14,15 +14,14 @@ namespace Insurance.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int TestimonialId { get; set; }
 
-        //[ForeignKey("CustomerId")]
-        public int CustomerId { get; set; }
-
         [Required]
         [Display(Name = "Your Message")]
         public string Content { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime TestimonialDate { get; set; }
+
+        public int CustomerId { get; set; }
 
         public virtual Customer Customer { get; set; }
     }

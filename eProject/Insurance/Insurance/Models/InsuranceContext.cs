@@ -20,7 +20,7 @@ namespace Insurance.Models
         public DbSet<Policy> Policies { get; set; }
         public DbSet<Claim> Claims { get; set; }
         public DbSet<Bill> Bills { get; set; }
-        public DbSet<CompanyExpense> CompanyExpenses { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<CustomerPolicy> CustomerPolicies { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }

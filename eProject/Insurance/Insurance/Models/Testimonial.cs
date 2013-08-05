@@ -21,6 +21,8 @@ namespace Insurance.Models
         [DataType(DataType.Date)]
         public DateTime TestimonialDate { get; set; }
 
+        public bool IsActive { get; set; }
+
         public int CustomerId { get; set; }
 
         public virtual Customer Customer { get; set; }

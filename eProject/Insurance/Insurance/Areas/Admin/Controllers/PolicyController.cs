@@ -47,6 +47,7 @@ namespace Insurance.Areas.Admin.Controllers
         // POST: /Admin/Policy/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Policy policy)
         {
             if (ModelState.IsValid)
@@ -76,6 +77,7 @@ namespace Insurance.Areas.Admin.Controllers
         // POST: /Admin/Policy/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Policy policy)
         {
             if (ModelState.IsValid)
@@ -104,6 +106,7 @@ namespace Insurance.Areas.Admin.Controllers
         // POST: /Admin/Policy/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Policy policy = db.Policies.Find(id);

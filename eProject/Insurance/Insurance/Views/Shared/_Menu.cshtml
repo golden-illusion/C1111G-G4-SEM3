@@ -1,0 +1,58 @@
+﻿@{
+    InsuranceContext ic = new InsuranceContext();
+    var _policies = ic.Policies;
+}
+
+<div class="header">
+    <div class="layout clearfix">
+        <div class="mob-layout wrap-left">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="../../Content/img/logo.png" alt=""></a>
+            <!-- Mobile Navigation Button -->
+            <div class="btn-menu icon-reorder"></div>
+            <!-- Navigation -->
+            <ul class="menu">
+                <!-- Item 1 -->
+                <li>
+                    <a href="/" class="active">Home</a>
+                </li>
+
+                <!-- Item 2 -->
+                <li>
+                    <a href="#">About Us</a>
+                </li>
+
+                <!-- Item 3 -->
+                <li>
+                    <a href="#">Products</a>
+                    <ul class="submenu">
+                        @foreach (var item in _policies)
+                        {
+                            <li>@Html.ActionLink(item.PolicyType, "Details", "Policy", new { id = item.PolicyId }, null)</li>
+                        }
+                    </ul>
+                </li>
+
+                <!-- Item 4 -->
+                <li>
+                    <a href="#">Claims</a>
+                </li>
+
+                <!-- Item 5 -->
+                <li>
+                    <a href="#"><i class="icon-envelope"></i>Contact Us</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- Search Form -->
+        <form action="/" class="b-search-form">
+            <div class="input-wrap">
+                <i class="icon-search"></i>
+                <input type="text" placeholder="Search..." style="font-style: italic;">
+            </div>
+        </form>
+        <!-- End Search Form -->
+    </div>
+</div>

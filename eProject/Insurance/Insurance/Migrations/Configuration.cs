@@ -1,6 +1,7 @@
 namespace Insurance.Migrations
 {
     using Insurance.Areas.Admin.Models;
+    using Insurance.Models;
     using InSurance.App_Start;
     using System;
     using System.Data.Entity;

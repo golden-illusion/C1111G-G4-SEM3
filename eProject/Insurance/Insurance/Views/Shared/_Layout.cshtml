@@ -26,9 +26,6 @@
             <div class="layout">
                 <!-- Some text -->
                 <div class="wrap-left">
-                    <span class="top-bar-text">Duis autem vel eum iriure dolor in hendrerit.</span>
-                </div>
-                <div class="wrap-right">
                     <!-- Phone -->
                     <span class="top-bar-phone"><span class="icon-phone">Call us: </span>1.244.145.3232</span>
                     <!-- Social Icons -->
@@ -41,6 +38,10 @@
                         <a class="sk" href="#"><i class="icon-skype"></i></a>
                     </div>
                     <!-- End Social Icons -->
+
+                </div>
+                <div class="wrap-right">
+                    @Html.Partial("_Login")
                 </div>
             </div>
         </div>
@@ -49,104 +50,7 @@
 
         <!-- HEADER 
 	============================================= -->
-        <div class="header">
-            <div class="layout clearfix">
-                <div class="mob-layout wrap-left">
-                    <!-- Logo -->
-                    <a href="index.html" class="logo">
-                        <img src="../../Content/img/logo.png" alt=""></a>
-                    <!-- Mobile Navigation Button -->
-                    <div class="btn-menu icon-reorder"></div>
-                    <!-- Navigation -->
-                    <ul class="menu">
-                        <!-- Item 1 -->
-                        <li>
-                            <a href="index-1.html" class="active">Home</a>
-                        </li>
-
-                        <!-- Item 2 -->
-                        <li>
-                            <a href="about-us.html">Pages</a>
-                        </li>
-
-                        <!-- Item 3 -->
-                        <li>
-                            <a href="portfolio-3-columns.html">Portfolio</a>
-                        </li>
-
-                        <!-- Item 4 -->
-                        <li>
-                            <a href="blog-medium.html">Blog</a>
-                        </li>
-
-                        <!-- Item 5 -->
-                        <li>
-                            <a href="elements.html">Elements</a>
-                        </li>
-
-                        <!-- Item 6 -->
-                        <li>
-                            <a href="contact-us-1.html"><i class="icon-envelope"></i>Contact Us</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- Search Form -->
-                <form action="/" class="b-search-form">
-                    <div class="input-wrap">
-                        <i class="icon-search"></i>
-                        <input type="text" placeholder="Search..." style="font-style: italic;">
-                    </div>
-                </form>
-                <!-- End Search Form -->
-            </div>
-            <!-- Mobile Navigation -->
-            <ul class="mob-menu">
-                <!-- Item 1 -->
-                <li>
-                    <div>
-                        <a href="index.html" class="active">Home</a>
-                    </div>
-                </li>
-                <!-- End Item 1 -->
-                <!-- Item 2 -->
-                <li>
-                    <div>
-                        <a href="about-us.html">Pages</a>
-                    </div>
-                </li>
-                <!-- End Item 2 -->
-                <!-- Item 3 -->
-                <li>
-                    <div>
-                        <a href="portfolio-3-columns.html">Portfolio</a>
-                    </div>
-                </li>
-                <!-- End Item 3 -->
-                <!-- Item 4 -->
-                <li>
-                    <div>
-                        <a href="blog-medium.html">Blog</a>
-                    </div>
-                </li>
-                <!-- End Item 4 -->
-                <!-- Item 5 -->
-                <li>
-                    <div>
-                        <a href="elements.html">Elements</a>
-                    </div>
-                </li>
-                <!-- End Item 5 -->
-                <!-- Item 6 -->
-                <li>
-                    <div>
-                        <a href="elements.html">Contact Us</a>
-                    </div>
-                </li>
-                <!-- End Item 6 -->
-            </ul>
-            <!-- End Mobile Navigation -->
-        </div>
+        @Html.Partial("_Menu")
         <!-- END HEADER 
 	============================================= -->
 
@@ -257,9 +161,9 @@
         <!-- END FOOTER 
 	============================================= -->
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/main")
-        @Scripts.Render("~/bundles/slider")
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
+    @Scripts.Render("~/bundles/slider")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

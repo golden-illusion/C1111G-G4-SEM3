@@ -15,7 +15,7 @@ namespace Insurance.Models
         public int CustomerId { get; set; }
 
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
 
         [Required]
@@ -59,7 +59,7 @@ namespace Insurance.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
 
         [Required]

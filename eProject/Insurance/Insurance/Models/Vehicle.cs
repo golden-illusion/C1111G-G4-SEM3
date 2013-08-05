@@ -27,12 +27,6 @@ namespace Insurance.Models
         public int VehicleVersion { get; set; }
 
         [Required]
-        [Display(Name = "Rate")]
-        [RegularExpression("^\\d\\.\\d$")]
-        [Range(0.0, 5.0)]
-        public double VehicleRate { get; set; }
-
-        [Required]
         [Display(Name = "Body Number")]
         public string VehicleBodyNumber { get; set; }
 
@@ -42,7 +36,7 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Warranty")]
-        public string VehicleWarranty { get; set; }
+        public bool VehicleWarranty { get; set; }
 
         public int CustomerId { get; set; }
 

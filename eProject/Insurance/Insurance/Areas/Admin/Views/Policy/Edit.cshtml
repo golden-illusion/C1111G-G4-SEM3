@@ -10,52 +10,49 @@
         <i class="icon-angle-right"></i>
 	</li>
     <li>
-		<a href="~/Admin/Policy/">Edit Policy</a>
+		<a href="~/Admin/Policy/Edit/@Model.PolicyId">Edit Policy</a>
 	</li>
 }
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Policy</legend>
-
-        @Html.HiddenFor(model => model.PolicyId)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PolicyType)
+<div class="row-fluid">
+<div class="span8">
+    <div class="box box-bordered box-color">
+        <div class="box-title">
+            <h3><i class="icon-th-list"></i>Policy "@Model.PolicyType"</h3>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PolicyType)
-            @Html.ValidationMessageFor(model => model.PolicyType)
+        <div class="box-content nopadding">
+            @using (Html.BeginForm("Edit", "Policy", FormMethod.Post, new { @class = "form-horizontal form-bordered form-validate",id="test" }))
+            {
+                @Html.ValidationSummary(true)
+                <div class="control-group">
+                    @Html.LabelFor(model => model.PolicyType, new { @class = "control-label", @for = "PolicyType" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.PolicyType, new { @class = "input-xlarge", placeholder = "Policy Type", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.PolicyDuration, new { @class = "control-label", @for = "PolicyDuration" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.PolicyDuration, new { @class = "input-xlarge", placeholder = "Policy Duration", data_rule_digits = "true", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label", @for = "Description" })
+                    <div class="controls">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "input-block-level", rows="5", placeholder = "Description", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.PolicyPrice, new { @class = "control-label", @for = "PolicyPrice" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.PolicyPrice, new { @class = "input-xlarge", placeholder = "Policy Fee", data_rule_number = "true", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="form-actions">
+                    @Html.HiddenFor(model => model.PolicyId) 
+                    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> Save changes</button>
+                    <button type="button" class="btn"><i class="icon-undo"></i> Cancel</button>
+                </div>
+            }
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PolicyDuration)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PolicyDuration)
-            @Html.ValidationMessageFor(model => model.PolicyDuration)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PolicyPrice)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PolicyPrice)
-            @Html.ValidationMessageFor(model => model.PolicyPrice)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

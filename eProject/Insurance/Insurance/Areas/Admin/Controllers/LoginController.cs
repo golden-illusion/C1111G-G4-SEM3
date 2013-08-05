@@ -50,7 +50,7 @@ namespace Insurance.Areas.Admin.Controllers
             }
             string error = "Invalid User Name/Password";
             ModelState.AddModelError("", error);
-            return View(model);
+            return View("Index",model);
         }
 
         protected override void Dispose(bool disposing)

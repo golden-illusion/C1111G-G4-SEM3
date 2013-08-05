@@ -67,7 +67,7 @@ namespace Insurance.Areas.Admin.Controllers
             Policy policy = db.Policies.Find(id);
             if (policy == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(policy);
         }

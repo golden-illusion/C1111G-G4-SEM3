@@ -14,7 +14,7 @@
 	</li>
 }
 <div class="row-fluid">
-<div class="span12">
+<div class="span8">
     <div class="box box-bordered box-color">
         <div class="box-title">
             <h3><i class="icon-th-list"></i>New Policy</h3>
@@ -36,21 +36,22 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label", @for = "Description" })
+                    <div class="controls">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "input-block-level", rows="5", placeholder = "Description", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
                     @Html.LabelFor(model => model.PolicyPrice, new { @class = "control-label", @for = "PolicyPrice" })
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.PolicyPrice, new { @class = "input-xlarge", placeholder = "Policy Duration", data_rule_number = "true", data_rule_required = "true" })
+                        @Html.TextBoxFor(model => model.PolicyPrice, new { @class = "input-xlarge", placeholder = "Policy Fee", data_rule_number = "true", data_rule_required = "true" })
                     </div>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="icon-plus-sign"></i> Create</button>
+                    <button type="Reset" class="btn"><i class="icon-undo"></i> Reset</button>
                 </div>
             }
         </div>
     </div>
-</div>
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 </div>

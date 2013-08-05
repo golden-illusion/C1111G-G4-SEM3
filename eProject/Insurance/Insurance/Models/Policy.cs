@@ -15,7 +15,7 @@ namespace Insurance.Models
         public int PolicyId { get; set; }
 
         [Required]
-        [Display(Name = "Type")]
+        [Display(Name = "Policy Type")]
         public string PolicyType { get; set; }
 
         [Required]
@@ -23,7 +23,11 @@ namespace Insurance.Models
         public int PolicyDuration { get; set; }
 
         [Required]
-        [Display(Name = "Price")]
+        [Display(Name="Description")]
+        public string Description { get; set; }
+
+        [Required]
+        [Display(Name = "Policy Fee")]
         public decimal PolicyPrice { get; set; }
 
         public virtual ICollection<CustomerPolicy> CustomerPolicies { get; set; }

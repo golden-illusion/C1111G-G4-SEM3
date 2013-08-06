@@ -1,0 +1,53 @@
+﻿@model Insurance.Models.Policy
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Policy</legend>
+
+        @Html.HiddenFor(model => model.PolicyId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PolicyType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PolicyType)
+            @Html.ValidationMessageFor(model => model.PolicyType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PolicyDuration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PolicyDuration)
+            @Html.ValidationMessageFor(model => model.PolicyDuration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PolicyPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PolicyPrice)
+            @Html.ValidationMessageFor(model => model.PolicyPrice)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,50 @@
+﻿@model Insurance.Models.Claim
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Claim</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AccidentPlace)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AccidentPlace)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AccidentDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AccidentDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InsuredAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InsuredAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClaimableAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClaimableAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CustomerPolicy.CustPolicyId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CustomerPolicy.CustPolicyId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ClaimId }) 
+    @Html.ActionLink("Back to List", "Index")
+</p>

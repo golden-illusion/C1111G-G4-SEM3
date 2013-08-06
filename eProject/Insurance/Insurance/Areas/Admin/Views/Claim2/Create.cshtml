@@ -1,0 +1,67 @@
+﻿@model Insurance.Models.Claim
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Claim</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccidentPlace)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccidentPlace)
+            @Html.ValidationMessageFor(model => model.AccidentPlace)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccidentDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccidentDate)
+            @Html.ValidationMessageFor(model => model.AccidentDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InsuredAmount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InsuredAmount)
+            @Html.ValidationMessageFor(model => model.InsuredAmount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClaimableAmount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClaimableAmount)
+            @Html.ValidationMessageFor(model => model.ClaimableAmount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustPolicyId, "CustomerPolicy")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CustPolicyId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CustPolicyId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

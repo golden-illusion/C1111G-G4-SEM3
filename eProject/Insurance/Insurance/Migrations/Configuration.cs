@@ -218,28 +218,28 @@ namespace Insurance.Migrations
                     new Expense 
                     {
                         ExpenseType = "Cash",
-                        ExpenseDate = DateTime.Parse("2013-08-16")
+                        ExpenseDate = DateTime.Parse("2013-08-16"),
                         ExpenseAmount = 4234
                     },
 
                     new Expense 
                     {
                         ExpenseType = "Cash",
-                        ExpenseDate = DateTime.Parse("2013-09-06")
+                        ExpenseDate = DateTime.Parse("2013-09-06"),
                         ExpenseAmount = 5435
                     },
 
                     new Expense 
                     {
                         ExpenseType = "Cash",
-                        ExpenseDate = DateTime.Parse("2013-02-21")
+                        ExpenseDate = DateTime.Parse("2013-02-21"),
                         ExpenseAmount = 2344
                     },
 
                     new Expense 
                     {
                         ExpenseType = "Cash",
-                        ExpenseDate = DateTime.Parse("2013-12-08")
+                        ExpenseDate = DateTime.Parse("2013-12-08"),
                         ExpenseAmount = 6789
                     }
                 );

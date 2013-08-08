@@ -69,7 +69,7 @@ namespace Insurance.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("", "Incorrect User Name/Password");
             return View(model);
         }
 
@@ -124,7 +124,7 @@ namespace Insurance.Controllers
 
         //
         // GET: /Account/Manage
-
+        [Authorize]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =

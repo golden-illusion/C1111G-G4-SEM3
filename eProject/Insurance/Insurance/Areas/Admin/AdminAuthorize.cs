@@ -36,8 +36,8 @@ namespace Insurance.Areas.Admin
                         new RouteValueDictionary(
                             new
                             {
-                                controller = "Login",
-                                action = "Index"
+                                controller = "Account",
+                                action = "Login"
                             })
                         );
         }

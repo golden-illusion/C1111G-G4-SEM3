@@ -4485,7 +4485,6 @@ label, input, button, select, textarea {
   font-size: 14px;
   left: 10px;
   top: 4px;
-  display: none;
 }
 #left .subnav .subnav-title .toggle-subnav:hover {
   color: #222;

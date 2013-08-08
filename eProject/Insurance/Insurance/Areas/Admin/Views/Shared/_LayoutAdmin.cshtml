@@ -80,13 +80,10 @@
                         <img src="~/Areas/Admin/Images/demo/user-avatar.jpg" alt=""></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
-                            <a href="more-userprofile.html">Edit profile</a>
+                            <a href="~/Admin/Account/Edit/@admin.AdminId">Account settings</a>
                         </li>
                         <li>
-                            <a href="#">Account settings</a>
-                        </li>
-                        <li>
-                            <a href="more-login.html">Sign out</a>
+                            <a href="~/Admin/Account/Logout">Log Out</a>
                         </li>
                     </ul>
                 </div>
@@ -99,159 +96,79 @@
                 <div class="subnav-title">
                     <a href="~/Admin" class="toggle-subnav"><i class="icon-angle-down"></i><span>Dashboard</span></a>
                 </div>
+                <ul class="subnav-menu">
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Statistics</a>
+                    </li>
+                    <li>
+                        <a href="#">Report</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="subnav <!--@if (!ViewContext.RouteData.Values["controller"].Equals("Policy")) { @Html.Raw("subnav-hidden") } -->">
+                <div class="subnav-title">
+                    <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Policy Manager</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li>
+                        <a href="~/Admin/Policy">List Policies</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Policy/Create">Add Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="subnav <!--@if (!ViewContext.RouteData.Values["controller"].Equals("Customer")) { @Html.Raw("subnav-hidden") }-->">
+                <div class="subnav-title">
+                    <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Customer Manager</span></a>
+                </div>
+                <ul class="subnav-menu">
+                    <li>
+                        <a href="~/Admin/Customer">List Customers</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Vehicle">List Vehicles</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/CustomerPolicy">List Policies</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Bill">List Billings</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Claim">List Claims</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Testimonial">List Testimonials</a>
+                    </li>
+                </ul>
             </div>
             <div class="subnav">
                 <div class="subnav-title">
-                    <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Content</span></a>
+                    <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Expense Manager</span></a>
                 </div>
                 <ul class="subnav-menu">
-                    <li class='dropdown'>
-                        <a href="#" data-toggle="dropdown">Articles</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Action #1</a>
-                            </li>
-                            <li>
-                                <a href="#">Antoher Link</a>
-                            </li>
-                            <li class='dropdown-submenu'>
-                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">This is level 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Unlimited levels</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Easy to use</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <li>
+                        <a href="#">List Expenses</a>
                     </li>
                     <li>
-                        <a href="#">News</a>
-                    </li>
-                    <li>
-                        <a href="#">Pages</a>
-                    </li>
-                    <li>
-                        <a href="#">Comments</a>
+                        <a href="#">Add Expense</a>
                     </li>
                 </ul>
             </div>
-            <div class="subnav subnav-hidden">
+            <div class="subnav">
                 <div class="subnav-title">
-                    <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Plugins</span></a>
+                    <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Admin Manager</span></a>
                 </div>
                 <ul class="subnav-menu">
                     <li>
-                        <a href="#">Cache manager</a>
-                    </li>
-                    <li class='dropdown'>
-                        <a href="#" data-toggle="dropdown">Import manager</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Action #1</a>
-                            </li>
-                            <li>
-                                <a href="#">Antoher Link</a>
-                            </li>
-                            <li class='dropdown-submenu'>
-                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">This is level 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Unlimited levels</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Easy to use</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a href="#">List Administrators</a>
                     </li>
                     <li>
-                        <a href="#">Contact form generator</a>
-                    </li>
-                    <li>
-                        <a href="#">SEO optimization</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="subnav subnav-hidden">
-                <div class="subnav-title">
-                    <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Settings</span></a>
-                </div>
-                <ul class="subnav-menu">
-                    <li>
-                        <a href="#">Theme settings</a>
-                    </li>
-                    <li class='dropdown'>
-                        <a href="#" data-toggle="dropdown">Page settings</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Action #1</a>
-                            </li>
-                            <li>
-                                <a href="#">Antoher Link</a>
-                            </li>
-                            <li class='dropdown-submenu'>
-                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">This is level 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Unlimited levels</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Easy to use</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Security settings</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="subnav subnav-hidden">
-                <div class="subnav-title">
-                    <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Default hidden</span></a>
-                </div>
-                <ul class="subnav-menu">
-                    <li>
-                        <a href="#">Menu</a>
-                    </li>
-                    <li class='dropdown'>
-                        <a href="#" data-toggle="dropdown">With submenu</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Action #1</a>
-                            </li>
-                            <li>
-                                <a href="#">Antoher Link</a>
-                            </li>
-                            <li class='dropdown-submenu'>
-                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>More stuff</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">This is level 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Easy to use</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Security settings</a>
+                        <a href="#">Add Administrator</a>
                     </li>
                 </ul>
             </div>

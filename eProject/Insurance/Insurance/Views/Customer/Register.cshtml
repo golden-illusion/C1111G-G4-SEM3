@@ -3,68 +3,108 @@
 @{
     ViewBag.Title = "Register";
 }
+<div class="b-titlebar">
+    <div class="layout">
+        <!-- Bread Crumbs -->
+        <ul class="crumbs">
+            <li>You are here:</li>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>Register</li>
+        </ul>
+        <!-- Title -->
+        <h1>Customer Register</h1>
+    </div>
+</div>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<div class="content">
+    <div class="layout">
+        <div class="row-item col-1_4" style="margin: 20px auto 20px 350px;">
+            @using (Html.BeginForm("Register", "Customer", FormMethod.Post, new { id = "registerForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationSummary(true)
+                    <div class="message-close icon-remove"></div>
+                </div>
 
-    <fieldset>
-        <legend>RegisterModel</legend>
+                <div class="input-wrap m-full-width">
+                    @Html.TextBoxFor(model => model.CustomerName, new { @class = "field-name", placeholder = "Full Name (require)" })
+                </div>
+                
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.CustomerPhone)
+                    <div class="message-close icon-remove"></div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CustomerName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CustomerName)
-            @Html.ValidationMessageFor(model => model.CustomerName)
-        </div>
+                <div class="input-wrap m-full-width">
+                    @Html.TextBoxFor(model => model.CustomerAddress, new { @class = "field-name", placeholder = "Address (require)" })
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CustomerAddress)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CustomerAddress)
-            @Html.ValidationMessageFor(model => model.CustomerAddress)
-        </div>
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.CustomerAddress)
+                    <div class="message-close icon-remove"></div>
+                </div>
+                
+                <div class="input-wrap m-full-width">
+                    @Html.TextBoxFor(model => model.CustomerPhone, new { type = "tel", @class = "field-name", placeholder = "Phone (require)" })
+                </div>
+                
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.CustomerPhone)
+                    <div class="message-close icon-remove"></div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CustomerPhone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CustomerPhone)
-            @Html.ValidationMessageFor(model => model.CustomerPhone)
-        </div>
+                <div class="input-wrap m-full-width">
+                    <i class="icon-user"></i>
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "field-name", placeholder = "User Name (require)" })
+                </div>
+                
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.UserName)
+                    <div class="message-close icon-remove"></div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserName)
-            @Html.ValidationMessageFor(model => model.UserName)
-        </div>
+                <div class="input-wrap m-full-width">
+                    <i class="icon-lock"></i>
+                    @Html.PasswordFor(model => model.Password, new { @class = "field-name", placeholder = "Password (require)" })
+                </div>
+                
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.Password)
+                    <div class="message-close icon-remove"></div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
+                <div class="input-wrap m-full-width">
+                    <i class="icon-lock"></i>
+                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "field-name", placeholder = "Confirm Password (require)" })
+                </div>
+                
+                <div class="b-message message-error" style="display: none;">
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    <div class="message-close icon-remove"></div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ConfirmPassword)
+                <div class="m-full-width">
+                    <input id="submitRegister" class="btn-submit btn colored" type="submit" value="Register" />
+                </div>
+            }
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ConfirmPassword)
-            @Html.ValidationMessageFor(model => model.ConfirmPassword)
-        </div>
-
-        <p>
-            <input type="submit" value="Register" />
-        </p>
-    </fieldset>
-}
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.message-error').each(function () {
+                var text = $(this).text().trim();
+                if (text.length > 0) {
+                    $(this).show();
+                }
+            });
+            $('#submitRegister').click(function () {
+                $('#registerForm').validate();
+            });
+        });
+    </script>
 }

@@ -177,6 +177,10 @@ img {
     border: none;
 }
 
+ul {
+    list-style: none;
+}
+
 .full-shadow {
     border: 1px solid #ccc;
     box-shadow: 1px 1px 4px 0 rgba(180,180,180,0.3);

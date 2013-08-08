@@ -24,17 +24,4 @@ namespace Insurance.Areas.Admin.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
-
-    public class AdminLogin
-    {
-        [Required(ErrorMessage = "This field is required.")]
-        [DataType(DataType.Text)]
-        public string UserName { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        public bool RememberMe { get; set; }
-    }
 }

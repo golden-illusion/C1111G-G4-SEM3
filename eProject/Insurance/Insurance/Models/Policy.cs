@@ -16,18 +16,21 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Policy Type")]
+        [StringLength(50)]
         public string PolicyType { get; set; }
 
         [Required]
         [Display(Name = "Duration")]
+        [Range(10, int.MaxValue)]
         public int PolicyDuration { get; set; }
 
         [Required]
-        [Display(Name="Description")]
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
         [Required]
         [Display(Name = "Policy Fee")]
+        [DataType(DataType.Currency)]
         public decimal PolicyPrice { get; set; }
 
         public virtual ICollection<CustomerPolicy> CustomerPolicies { get; set; }

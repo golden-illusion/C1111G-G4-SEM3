@@ -1,0 +1,133 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Insurance.Models.Vehicle>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "List Vehicles";
+}
+@section breadcrumbs {
+    <li>
+        <a href="~/Admin/Customer/">Customer</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/">Vehicle</a>
+    </li>
+}
+<div class="row-fluid">
+    <div class="span8">
+        <div class="box box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-search"></i>Search</h3>
+            </div>
+            <div class="box-content nopadding">
+                @using (Html.BeginForm("Search", "Vehicle", FormMethod.Post, new { @class = "form-horizontal form-bordered", id = "test" }))
+                {
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Search By</label>
+                        <div class="controls">
+                            <div class="input-medium">
+                                <select name="type" id="type" class='chosen-select'>
+                                    <option value="1">Vehicle Name</option>
+                                    <option value="2">Vehicle Number</option>
+                                    <option value="3">Vehicle Model</option>
+                                    <option value="4">Body Number</option>
+                                    <option value="5">Engine Number</option>
+                                    <option value="6">Customer Name</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">&nbsp;</label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input type="text" placeholder="Keyword" class='input-medium' name="keyword" id="keyword" />
+                                <button class="btn" type="submit"><i class="icon-search"></i>&nbsp;Search</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3>
+                    <i class="icon-table"></i>
+                    List Vehicle
+                </h3>
+            </div>
+            <div class="box-content nopadding">
+                <table class="table table-hover table-nomargin">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Vehicle</th>
+                            <th>Customer</th>
+                            <th>Vehicle Number</th>
+                            <th>Vehicle Model</th>
+                            <th>Version</th>
+                            <th>Warranty</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.VehicleId</td>
+                                <td>
+                                    @Html.ActionLink(item.VehicleName, "Details", new { id = item.VehicleId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.Customer.CustomerName, "Details", "Customer", new { id = item.Customer.CustomerId }, null)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehicleNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehicleModel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehicleVersion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehicleWarranty)
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><i class="icon-cog"></i>&nbsp;Action <span class="caret"></span></a>
+                                        <ul class="dropdown-menu dropdown-primary">
+                                            <li>
+                                                @Html.ActionLink("Details", "Details", new { id = item.VehicleId })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.VehicleId })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.VehicleId })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+            @if ((int)ViewBag.Total > 1)
+            {
+                <div class="table-pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), (PagedListRenderOptions)ViewBag.Options)
+                </div>
+            }
+        </div>
+    </div>
+</div>

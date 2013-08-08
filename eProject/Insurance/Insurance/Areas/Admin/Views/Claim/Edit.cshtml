@@ -1,0 +1,63 @@
+﻿@model Insurance.Models.Claim
+ 
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Dashboard";
+}
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Edit", "Claim", new { Id = Model.ClaimId },
+                       FormMethod.Post, new { @class = "form-horizontal form-validate" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.ClaimId)
+    <div class="control-group">
+        <label for="AccidentPlace" class="control-label">AccidentPlace <small>minlength: 3</small></label>
+        <div class="controls">
+            @Html.EditorFor(model => model.AccidentPlace)
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="AccidentDate" class="control-label">AccidentDate <small>YYYY-MM-DD</small></label>
+        <div class="controls">
+            @Html.EditorFor(model => model.AccidentDate)
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="InsuredAmount" class="control-label">InsuredAmount</label>
+        <div class="controls">
+            @Html.EditorFor(model => model.InsuredAmount)
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="ClaimableAmount" class="control-label">ClaimableAmount</label>
+        <div class="controls">
+            @Html.EditorFor(model => model.ClaimableAmount)
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="CUstPolicyId" class="control-label">CUstPolicy</label>
+        <div class="controls">
+            @{//Html.EditorFor(model => model.CustomerPolicy.Policy)
+              
+            }
+            @Html.HiddenFor(model => model.CustPolicyId)
+            @Html.LabelFor(model => model.CustomerPolicy.Policy)
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Submit">
+        <button type="button" class="btn">Cancel</button>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

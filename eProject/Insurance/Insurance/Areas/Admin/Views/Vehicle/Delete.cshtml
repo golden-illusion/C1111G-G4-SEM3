@@ -1,0 +1,75 @@
+﻿@model Insurance.Models.Vehicle
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Vehicle</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleModel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleModel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleVersion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleVersion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleBodyNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleBodyNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleEngineNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleEngineNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleWarranty)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleWarranty)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Customer.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Customer.UserName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

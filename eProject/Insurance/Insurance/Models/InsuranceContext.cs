@@ -12,7 +12,7 @@ namespace Insurance.Models
         public InsuranceContext()
             : base("DefaultConnection")
         {
-
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Customer> Customers { get; set; }

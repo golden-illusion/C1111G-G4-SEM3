@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title>Boson</title>
+    <title>@ViewBag.Title</title>
 
     @Styles.Render("~/Content/main")
     @Styles.Render("~/Content/responsive")
@@ -69,19 +69,14 @@
             <div class="b-widgets">
                 <div class="layout">
                     <div class="row">
-                        <!-- Links -->
+                        <!-- About -->
                         <div class="row-item col-1_4">
-                            <h3>Links</h3>
-                            <ul class="b-list just-links m-dark">
-                                <li><a href="#">Voluptas Assumenda</a></li>
-                                <li><a href="#">Repudiandae Sint</a></li>
-                                <li><a href="#">Perferendis Doloribus</a></li>
-                                <li><a href="#">Maxime Placeat</a></li>
-                                <li><a href="#">Quidem Rerum</a></li>
-                                <li><a href="#">Occaecati Cupiditate</a></li>
-                            </ul>
+                            <img src="../../Content/img/logo.png" alt="" style="margin-bottom: 10px;">
+                            <p>
+                                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                            </p>
                         </div>
-                        <!-- End Links -->
+                        <!-- End About -->
                         <!-- Latest Tweets -->
                         <div class="row-item col-1_4">
                             <h3>Latest Tweets</h3>
@@ -101,42 +96,53 @@
                             </div>
                         </div>
                         <!-- End Latest Tweets -->
-                        <!-- Tag Cloud -->
+                        <!-- Latest Project -->
                         <div class="row-item col-1_4">
-                            <h3>Popular Tags</h3>
-                            <div class="b-tag-cloud m-dark">
-                                <a href="#">beach</a>
-                                <a href="#">bar</a>
-                                <a href="#">blog</a>
-                                <a href="#">business</a>
-                                <a href="#">coctail</a>
+                            <h3>Latest Projects</h3>
+                            <div class="latest-project">
+                                <div class="latest-project-item">
+                                    <a href="#">
+                                        <img src="../../Content/img/elements/rp-1.jpg" alt=""></a>
+                                </div>
+                                <div class="latest-project-item">
+                                    <a href="#">
+                                        <img src="../../Content/img/elements/rp-2.jpg" alt=""></a>
+                                </div>
+                                <div class="latest-project-item">
+                                    <a href="#">
+                                        <img src="../../Content/img/elements/rp-3.jpg" alt=""></a>
+                                </div>
+                                <div class="latest-project-item">
+                                    <a href="#">
+                                        <img src="../../Content/img/elements/rp-4.jpg" alt=""></a>
+                                </div>
+                                <div class="latest-project-item">
+                                    <a href="#">
+                                        <img src="../../Content/img/elements/rp-5.jpg" alt=""></a>
+                                </div>
+                                <div class="latest-project-item">
+                                    <a href="#">
+                                        <img src="../../Content/img/elements/rp-6.jpg" alt=""></a>
+                                </div>
                             </div>
                         </div>
-                        <!-- End Tag Cloud -->
-                        <!-- Contact Form -->
+                        <!-- End Latest Project -->
+                        <!-- Contact Information -->
                         <div class="row-item col-1_4">
-                            <h3>Contact Form</h3>
-                            <!-- Success Message -->
-                            <div class="form-message"></div>
-                            <!-- Form -->
-                            <form class="b-form b-contact-form" action="contact.php">
-                                <div class="input-wrap m-full-width">
-                                    <i class="icon-user"></i>
-                                    <input class="field-name" type="text" placeholder="Name (required)">
-                                </div>
-                                <div class="input-wrap m-full-width">
-                                    <i class="icon-envelope"></i>
-                                    <input class="field-email" type="text" placeholder="E-mail (required)">
-                                </div>
-                                <div class="textarea-wrap">
-                                    <i class="icon-pencil"></i>
-                                    <textarea class="field-comments" placeholder="Message"></textarea>
-                                </div>
-                                <input class="btn-submit btn colored" type="submit" value="Send">
-                            </form>
-                            <!-- End Form -->
+                            <h3>Contact Information</h3>
+                            <!-- Address -->
+                            <ul class="b-list b-contact m-dark" style="margin-bottom: 15px;">
+                                <li class="contact-address"><i class="icon-map-marker"></i><span>103088. Ut wisi enim ad minim veniam, quis nostrud.</span></li>
+                                <li class="contact-mail"><i class="icon-envelope"></i><a href="#">mail@mail.com</a></li>
+                                <li class="contact-phone"><i class="icon-phone"></i><span>+1 (229) 991-22-11</span></li>
+                                <li class="contact-address"><i class="icon-time"></i><span>Monday-Friday: 9:<sup>00</sup> — 18:<sup>00</sup><br>
+                                    Saturday: 10:<sup>00</sup> — 17:<sup>00</sup><br>
+                                    Sunday: closed</span>
+                                </li>
+                            </ul>
+                            <!-- End Address -->
                         </div>
-                        <!-- End Contact Form -->
+                        <!-- End Contact Information -->
                     </div>
                 </div>
             </div>
@@ -160,7 +166,7 @@
         </div>
         <!-- END FOOTER 
 	============================================= -->
-
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/main")
     @Scripts.Render("~/bundles/slider")

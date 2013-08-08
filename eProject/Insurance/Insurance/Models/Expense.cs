@@ -16,6 +16,7 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Expense Type")]
+        [StringLength(50)]
         public string ExpenseType { get; set; }
 
         [Required]

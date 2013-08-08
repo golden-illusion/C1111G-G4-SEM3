@@ -16,6 +16,7 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Accident Place")]
+        [StringLength(100)]
         public string AccidentPlace { get; set; }
 
         [Required]
@@ -24,10 +25,12 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Insured Amount")]
+        [DataType(DataType.Currency)]
         public decimal InsuredAmount { get; set; }
 
         [Required]
         [Display(Name = "Claimable Amount")]
+        [DataType(DataType.Currency)]
         public decimal ClaimableAmount { get; set; }
 
         public int CustPolicyId { get; set; }

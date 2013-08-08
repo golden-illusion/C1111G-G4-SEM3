@@ -197,6 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\PolicyController.cs" />
     <Compile Include="Areas\Admin\Misc.cs" />
     <Compile Include="Areas\Admin\Models\Admin.cs" />
+    <Compile Include="Controllers\ClaimController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1668,6 +1669,10 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\revolution-slider-options.js" />
+    <Content Include="Views\Claim\Create.cshtml" />
+    <Content Include="Views\Claim\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <None Include="Views\Shared\404-error-page.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1693,7 +1698,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Customer\_SetPasswordPartial.cshtml" />
@@ -1705,7 +1709,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Scripts\plugins\elfinder\files\.quarantine\" />
-    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

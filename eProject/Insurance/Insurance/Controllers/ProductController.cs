@@ -15,9 +15,17 @@ namespace Insurance.Controllers
         private InsuranceContext db = new InsuranceContext();
 
         //
-        // GET: /Policy/Details/5
+        // GET: /Product/Index
+        public ActionResult Index()
+        {
+            var policies = db.Policies.First();
+            return View(policies);
+        }
 
-        public ActionResult Details(int id = 0)
+        //
+        // GET: /Product/Details/5
+
+        public ActionResult Details(int? id = 0)
         {
             Policy policy = db.Policies.Find(id);
             if (policy == null)
@@ -28,7 +36,7 @@ namespace Insurance.Controllers
         }
 
         //
-        // GET: /Policy/Create
+        // GET: /Product/Create
         [Authorize]
         public ActionResult Buy(int? id = 0)
         {
@@ -37,16 +45,17 @@ namespace Insurance.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PolicyId = id;
+            Session["PolicyId"] = id;
+            ViewBag.PolicyType = policy.PolicyType;
             return View();
         }
 
         //
-        // POST: /Policy/Create
+        // POST: /Product/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Buy(Vehicle vehicle, int policyId)
+        public ActionResult Buy(Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -55,9 +64,9 @@ namespace Insurance.Controllers
                 db.SaveChanges();
                 CustomerPolicy customerPolicy = new CustomerPolicy();
                 customerPolicy.StartDate = DateTime.Now.Date;
-                customerPolicy.EndDate = DateTime.Now.AddDays(GetDuration(policyId));
+                customerPolicy.EndDate = DateTime.Now.AddDays(GetDuration(Int32.Parse(Session["PolicyId"].ToString())));
                 customerPolicy.VehicleId = vehicle.VehicleId;
-                customerPolicy.PolicyId = policyId;
+                customerPolicy.PolicyId = Int32.Parse(Session["PolicyId"].ToString());
                 db.CustomerPolicies.Add(customerPolicy);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");

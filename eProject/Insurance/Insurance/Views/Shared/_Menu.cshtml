@@ -1,6 +1,6 @@
 ﻿@{
-    InsuranceContext ic = new InsuranceContext();
-    var _policies = ic.Policies;
+    InsuranceContext db = new InsuranceContext();
+    var _policies = db.Policies;
 }
 
 <div class="header">
@@ -15,7 +15,7 @@
             <ul class="menu">
                 <!-- Item 1 -->
                 <li>
-                    <a href="/" class="active">Home</a>
+                    @Html.ActionLink("Home", "Index", "Home")
                 </li>
 
                 <!-- Item 2 -->
@@ -26,17 +26,20 @@
                 <!-- Item 3 -->
                 <li>
                     <a href="#">Products</a>
-                    <ul class="submenu">
-                        @foreach (var item in _policies)
-                        {
-                            <li>@Html.ActionLink(item.PolicyType, "Details", "Policy", new { id = item.PolicyId }, null)</li>
-                        }
-                    </ul>
+                    @if (_policies.Count() > 0)
+                    {
+                        <ul class="submenu">
+                            @foreach (var item in _policies)
+                            {
+                                <li>@Html.ActionLink(item.PolicyType, "Details", "Product", new { id = item.PolicyId }, null)</li>
+                            }
+                        </ul>
+                    }
                 </li>
 
                 <!-- Item 4 -->
                 <li>
-                    <a href="#">Claims</a>
+                    @Html.ActionLink("Claims", "Index", "Claim")
                 </li>
 
                 <!-- Item 5 -->

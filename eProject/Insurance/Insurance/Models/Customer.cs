@@ -16,6 +16,7 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "User Name")]
+        [StringLength(30, ErrorMessage = "The {0} have must be at least {2} characters long.", MinimumLength = 4)]
         public string UserName { get; set; }
 
         [Required]
@@ -25,12 +26,13 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Address")]
-        [StringLength(100, ErrorMessage = "The {0} have must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(100)]
         public string CustomerAddress { get; set; }
 
         [Required]
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
+        [StringLength(15, MinimumLength = 10)]
         public string CustomerPhone { get; set; }
 
         public virtual ICollection<Vehicle> Vehicles { get; set; }
@@ -86,10 +88,12 @@ namespace Insurance.Models
         [Required]
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
+        [StringLength(15, MinimumLength = 10)]
         public string CustomerPhone { get; set; }
 
         [Required]
         [Display(Name = "User name")]
+        [StringLength(30, ErrorMessage = "The {0} have must be at least {2} characters long.", MinimumLength = 4)]
         public string UserName { get; set; }
 
         [Required]

@@ -15,6 +15,7 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Customer Prove")]
+        [StringLength(100)]
         public string CustomerAddProve { get; set; }
 
         [Required]
@@ -24,6 +25,7 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Amount")]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
         public int CustPolicyId { get; set; }

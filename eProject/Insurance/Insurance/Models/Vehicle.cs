@@ -16,10 +16,17 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Vehicle")]
+        [StringLength(50)]
         public string VehicleName { get; set; }
 
         [Required]
+        [Display(Name = "License Plate")]
+        [StringLength(15)]
+        public string VehicleNumber { get; set; }
+
+        [Required]
         [Display(Name = "Model")]
+        [StringLength(20)]
         public string VehicleModel { get; set; }
 
         [Required]
@@ -28,10 +35,12 @@ namespace Insurance.Models
 
         [Required]
         [Display(Name = "Body Number")]
+        [StringLength(20)]
         public string VehicleBodyNumber { get; set; }
 
         [Required]
         [Display(Name = "Engine Number")]
+        [StringLength(20)]
         public string VehicleEngineNumber { get; set; }
 
         [Required]

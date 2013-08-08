@@ -10,13 +10,11 @@
         <!-- Bread Crumbs -->
         <ul class="crumbs">
             <li>You are here:</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Products", "Index", "Product")</li>
-            <li>@Model.PolicyType</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Product">Products</a></li>
         </ul>
         <!-- Title -->
-        <h1 style="float: left; margin-right: 20px;">@Model.PolicyType</h1>
-        <h1>(Price: $<span style="color: #f00;">@Model.PolicyPrice</span>)</h1>
+        <h1>@Model.PolicyType</h1>
     </div>
 </div>
 
@@ -37,7 +35,7 @@
                 <ul class="b-side-nav">
                     @foreach (var item in _policies)
                     {
-                        <li>@Html.ActionLink(item.PolicyType, "Details", "Product", new { id = item.PolicyId }, null)</li>
+                        <li>@Html.ActionLink(item.PolicyType, "Details", "Product", new { id = Model.PolicyId }, null)</li>
                     }
                 </ul>
                 <!-- End Side Navigation -->

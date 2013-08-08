@@ -1,64 +1,134 @@
 ﻿@model Insurance.Models.Vehicle
 
 @{
-    ViewBag.Title = "Car Information";
+    ViewBag.Title = "Vehicle Information";
 }
+<div class="b-titlebar">
+    <div class="layout">
+        <!-- Bread Crumbs -->
+        <ul class="crumbs">
+            <li>You are here:</li>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Products", "Index", "Product")</li>
+            <li>Buy @ViewBag.PolicyType</li>
+        </ul>
+        <!-- Title -->
+        <h1>Vehicle Information</h1>
+    </div>
+</div>
 
 <div class="content">
     <div class="layout">
-        <div class="row-item col-1_4" style="margin: 20px auto 20px 350px;">
-            @using (Html.BeginForm("Buy", "Product", new { policyId = (int)ViewBag.PolicyId }, FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="row-item col-3_4">
+                @using (Html.BeginForm("Buy", "Product", FormMethod.Post, new { style = "width: 250px; margin-left: 235px; margin-top: 30px;" }))
+                {
+                    @Html.AntiForgeryToken()
 
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationSummary(true)
-                    <div class="message-close icon-remove"></div>
-                </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationSummary(true)
+                        <div class="message-close icon-remove"></div>
+                    </div>
 
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.VehicleName, new { @class = "field-name", data_rule_required = "true", placeholder = "Vehicle Name (require)" })
+                    <div class="input-wrap m-full-width">
+                        @Html.TextBoxFor(model => model.VehicleName, new { @class = "field-name", data_rule_required = "true", placeholder = "Vehicle Name (require)" })
+                    </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationMessageFor(model => model.VehicleName)
+                        <div class="message-close icon-remove"></div>
+                    </div>
+                    <div class="input-wrap m-full-width">
+                        @Html.TextBoxFor(model => model.VehicleNumber, new { @class = "field-name", data_rule_required = "true", placeholder = "License Plate (require)" })
+                    </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationMessageFor(model => model.VehicleNumber)
+                        <div class="message-close icon-remove"></div>
+                    </div>
+                    <div class="input-wrap m-full-width">
+                        @Html.TextBoxFor(model => model.VehicleModel, new { @class = "field-name", data_rule_required = "true", placeholder = "Model (require)" })
+                    </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationMessageFor(model => model.VehicleModel)
+                        <div class="message-close icon-remove"></div>
+                    </div>
+                    <div class="input-wrap m-full-width">
+                        @Html.TextBoxFor(model => model.VehicleVersion, new { @class = "field-name", data_rule_required = "true", placeholder = "Version (require)" })
+                    </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationMessageFor(model => model.VehicleVersion)
+                        <div class="message-close icon-remove"></div>
+                    </div>
+                    <div class="input-wrap m-full-width">
+                        @Html.TextBoxFor(model => model.VehicleBodyNumber, new { @class = "field-name", data_rule_required = "true", placeholder = "Body Number (require)" })
+                    </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationMessageFor(model => model.VehicleBodyNumber)
+                        <div class="message-close icon-remove"></div>
+                    </div>
+                    <div class="input-wrap m-full-width">
+                        @Html.TextBoxFor(model => model.VehicleEngineNumber, new { @class = "field-name", data_rule_required = "true", placeholder = "Engine Number (require)" })
+                    </div>
+                    <div class="b-message message-error" style="display: none;">
+                        @Html.ValidationMessageFor(model => model.VehicleEngineNumber)
+                        <div class="message-close icon-remove"></div>
+                    </div>
+                    <div class="m-full-width" style="margin-bottom: 10px;">
+                        @Html.CheckBoxFor(model => model.VehicleWarranty)
+                        Your vehicle is insured or not?
+                    </div>
+                    <div class="m-full-width">
+                        <input style="width: 100px;" id="submitLogin" class="btn-submit btn colored" type="submit" value="Buy" />
+                    </div>
+                }
+            </div>
+            <!-- Sidebar -->
+            <div class="row-item col-1_4 sidebar">
+                <!-- Latest Projects -->
+                <h3 style="margin-bottom: 20px;">Latest Projects</h3>
+                <div class="latest-project">
+                    <div class="latest-project-item">
+                        <a href="#">
+                            <img src="../../Content/img/port/rp-1.jpg" alt=""></a>
+                    </div>
+                    <div class="latest-project-item">
+                        <a href="#">
+                            <img src="../../Content/img/port/rp-2.jpg" alt=""></a>
+                    </div>
+                    <div class="latest-project-item">
+                        <a href="#">
+                            <img src="../../Content/img/port/rp-3.jpg" alt=""></a>
+                    </div>
+                    <div class="latest-project-item">
+                        <a href="#">
+                            <img src="../../Content/img/port/rp-4.jpg" alt=""></a>
+                    </div>
+                    <div class="latest-project-item">
+                        <a href="#">
+                            <img src="../../Content/img/port/rp-5.jpg" alt=""></a>
+                    </div>
+                    <div class="latest-project-item">
+                        <a href="#">
+                            <img src="../../Content/img/port/rp-6.jpg" alt=""></a>
+                    </div>
                 </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.VehicleName)
-                    <div class="message-close icon-remove"></div>
+                <!-- End Latest Project -->
+                <!-- Twitter Widget -->
+                <h3>Twitter Widget</h3>
+                <div class="b-twitter">
+                    <ul>
+                        <li>
+                            <span>Et harum quidem rerum facilis est et expedita distinctio <a href="#" class="link">http://twitter.com</a></span>
+                            <span class="twit-date">Jan 7, 2013</span>
+                        </li>
+                        <li>
+                            <span>Nam libero tempore, cum soluta nobis est eligendi :) <a href="#" class="link">http://twitter.com</a></span>
+                            <span class="twit-date">Jan 7, 2013</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.VehicleModel, new { @class = "field-name", data_rule_required = "true", placeholder = "Model (require)" })
-                </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.VehicleModel)
-                    <div class="message-close icon-remove"></div>
-                </div>
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.VehicleVersion, new { @class = "field-name", data_rule_required = "true", placeholder = "Version (require)" })
-                </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.VehicleVersion)
-                    <div class="message-close icon-remove"></div>
-                </div>
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.VehicleBodyNumber, new { @class = "field-name", data_rule_required = "true", placeholder = "Body Number (require)" })
-                </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.VehicleBodyNumber)
-                    <div class="message-close icon-remove"></div>
-                </div>
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.VehicleEngineNumber, new { @class = "field-name", data_rule_required = "true", placeholder = "Engine Number (require)" })
-                </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.VehicleEngineNumber)
-                    <div class="message-close icon-remove"></div>
-                </div>
-                <div class="m-full-width" style="margin-bottom: 10px;">
-                    @Html.CheckBoxFor(model => model.VehicleWarranty)
-                    @Html.LabelFor(model => model.VehicleWarranty)
-                </div>
-                <div class="m-full-width">
-                    <input id="submitLogin" class="btn-submit btn colored" type="submit" value="Buy" />
-                </div>
-            }
+                <!-- End Twitter Widget -->
+            </div>
+            <!-- End Sidebar -->
         </div>
     </div>
 </div>

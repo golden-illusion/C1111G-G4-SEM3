@@ -48,7 +48,7 @@ namespace Insurance.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Claim claim)
+        public ActionResult Create([Bind(Exclude = "InsuredAmount, ClaimableAmount")]Claim claim)
         {
             if (ModelState.IsValid)
             {

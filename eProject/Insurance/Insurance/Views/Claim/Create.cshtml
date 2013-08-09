@@ -43,20 +43,6 @@
                     @Html.ValidationMessageFor(model => model.AccidentDate)
                     <div class="message-close icon-remove"></div>
                 </div>
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.InsuredAmount, new { @class = "field-name", data_rule_required = "true", placeholder = "Insured Amount (require)" })
-                </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.InsuredAmount)
-                    <div class="message-close icon-remove"></div>
-                </div>
-                <div class="input-wrap m-full-width">
-                    @Html.TextBoxFor(model => model.ClaimableAmount, new { @class = "field-name", data_rule_required = "true", placeholder = "Claimable Amount (require)" })
-                </div>
-                <div class="b-message message-error" style="display: none;">
-                    @Html.ValidationMessageFor(model => model.ClaimableAmount)
-                    <div class="message-close icon-remove"></div>
-                </div>
                 <div class="m-full-width">
                     <input class="btn-submit btn colored" type="submit" value="Create Claim" />
                 </div>

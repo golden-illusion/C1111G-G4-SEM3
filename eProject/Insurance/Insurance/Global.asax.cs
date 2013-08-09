@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Insurance.Migrations;
 using Insurance.Models;
 using InSurance.App_Start;
 
@@ -20,6 +22,8 @@ namespace Insurance
     {
         protected void Application_Start()
         {
+            var migrator = new DbMigrator(new Configuration());
+            migrator.Update();
             WebSecurityConfig.RegisterWebSecurity();
             AreaRegistration.RegisterAllAreas();
 

@@ -1,0 +1,57 @@
+﻿@model Insurance.Models.Policy
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Add Policy";
+}
+@section breadcrumbs {
+    <li>
+		<a href="~/Admin/Policy/">Policy</a>
+        <i class="icon-angle-right"></i>
+	</li>
+    <li>
+		<a href="~/Admin/Policy/">Add Policy</a>
+	</li>
+}
+<div class="row-fluid">
+<div class="span8">
+    <div class="box box-bordered box-color">
+        <div class="box-title">
+            <h3><i class="icon-th-list"></i>New Policy</h3>
+        </div>
+        <div class="box-content nopadding">
+            @using (Html.BeginForm("Create", "Policy", FormMethod.Post, new { @class = "form-horizontal form-bordered form-validate",id="test" }))
+            {
+                @Html.ValidationSummary(true)
+                <div class="control-group">
+                    @Html.LabelFor(model => model.PolicyType, new { @class = "control-label", @for = "PolicyType" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.PolicyType, new { @class = "input-xlarge", placeholder = "Policy Type", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.PolicyDuration, new { @class = "control-label", @for = "PolicyDuration" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.PolicyDuration, new { @class = "input-xlarge", placeholder = "Policy Duration", data_rule_digits = "true", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label", @for = "Description" })
+                    <div class="controls">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "input-block-level", rows="5", placeholder = "Description", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(model => model.PolicyPrice, new { @class = "control-label", @for = "PolicyPrice" })
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.PolicyPrice, new { @class = "input-xlarge", placeholder = "Policy Fee", data_rule_number = "true", data_rule_required = "true" })
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary"><i class="icon-plus-sign"></i> Create</button>
+                    <button type="Reset" class="btn"><i class="icon-undo"></i> Reset</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

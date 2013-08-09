@@ -1,0 +1,86 @@
+﻿@model Insurance.Models.Vehicle
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Vehicle Detail";
+}
+@section breadcrumbs {
+    <li>
+        <a href="~/Admin/Customer/">Customer</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/">Vehicle</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/Details/@Model.VehicleId">Vehicle Detail</a>
+    </li>
+}
+
+<div class="row-fluid">
+    <div class="span8">
+        <div class="box box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-th-list"></i>Vehicle "@Model.VehicleName"</h3>
+            </div>
+            <div class="box-content nopadding">
+                @using (Html.BeginForm("Edit/" + @Model.VehicleId, "Vehicle", FormMethod.Get, new { @class = "form-horizontal form-bordered", id = "test" }))
+                {
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleName, new { @class = "control-label", @for = "VehicleName" })
+                        <div class="controls">
+                            @Model.VehicleName
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Customer Name</label>
+                        <div class="controls">
+                            @Model.Customer.CustomerName
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleNumber, new { @class = "control-label", @for = "VehicleNumber" })
+                        <div class="controls">
+                            @Model.VehicleNumber
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleModel, new { @class = "control-label", @for = "VehicleModel" })
+                        <div class="controls">
+                            @Model.VehicleModel
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleVersion, new { @class = "control-label", @for = "VehicleVersion" })
+                        <div class="controls">
+                            @Model.VehicleVersion
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleBodyNumber, new { @class = "control-label", @for = "VehicleBodyNumber" })
+                        <div class="controls">
+                            @Model.VehicleBodyNumber
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleEngineNumber, new { @class = "control-label", @for = "VehicleEngineNumber" })
+                        <div class="controls">
+                            @Model.VehicleEngineNumber
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleWarranty, new { @class = "control-label", @for = "VehicleWarranty" })
+                        <div class="controls">
+                            @Html.DisplayFor(modelItem => Model.VehicleWarranty)
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i> Edit Vehicle</button>
+                        <button type="button" class="btn"><i class="icon-arrow-left"></i> Back</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

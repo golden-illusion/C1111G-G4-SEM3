@@ -1,0 +1,46 @@
+﻿@model Insurance.Models.Policy
+
+@{
+    ViewBag.Title = "Products";
+    InsuranceContext db = new InsuranceContext();
+    var _policies = db.Policies;
+}
+<div class="b-titlebar">
+    <div class="layout">
+        <!-- Bread Crumbs -->
+        <ul class="crumbs">
+            <li>You are here:</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Product">Products</a></li>
+        </ul>
+        <!-- Title -->
+        <h1>@Model.PolicyType</h1>
+    </div>
+</div>
+
+<div class="content">
+    <div class="layout">
+        <div class="row">
+            <div class="row-item col-3_4">
+                <!-- Paragraph -->
+                <p style="text-align: justify;">
+                    @Model.Description
+                </p>
+                <!-- End Paragraph -->
+                @Html.ActionLink("Buy Now!", "Buy", "Product", new { id = Model.PolicyId }, new { @class = "btn-submit btn colored" })
+            </div>
+            <!-- Sidebar -->
+            <div class="row-item col-1_4 sidebar">
+                <!-- Side Navigation -->
+                <ul class="b-side-nav">
+                    @foreach (var item in _policies)
+                    {
+                        <li>@Html.ActionLink(item.PolicyType, "Details", "Product", new { id = Model.PolicyId }, null)</li>
+                    }
+                </ul>
+                <!-- End Side Navigation -->
+            </div>
+            <!-- End Sidebar -->
+        </div>
+    </div>
+</div>

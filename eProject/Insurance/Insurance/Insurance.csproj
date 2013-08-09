@@ -213,10 +213,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201308090239574_InitialCreate.cs" />
-    <Compile Include="Migrations\201308090239574_InitialCreate.Designer.cs">
-      <DependentUpon>201308090239574_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Claim.cs" />
@@ -1554,11 +1550,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Login.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201308090239574_InitialCreate.resx">
-      <DependentUpon>201308090239574_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

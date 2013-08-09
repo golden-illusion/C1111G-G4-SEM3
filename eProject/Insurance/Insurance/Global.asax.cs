@@ -22,8 +22,8 @@ namespace Insurance
     {
         protected void Application_Start()
         {
-            var migrator = new DbMigrator(new Configuration());
-            migrator.Update();
+            //var migrator = new DbMigrator(new Configuration());
+            //migrator.Update();
             WebSecurityConfig.RegisterWebSecurity();
             AreaRegistration.RegisterAllAreas();
 

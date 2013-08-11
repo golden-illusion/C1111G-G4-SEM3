@@ -15,7 +15,7 @@ namespace Insurance.Areas.Admin.Controllers
     public class VehicleController : Controller
     {
         private InsuranceContext db = new InsuranceContext();
-
+        private int RESULT_PER_PAGE = 20;
         //
         // GET: /Admin/Vehicle/
 
@@ -27,8 +27,8 @@ namespace Insurance.Areas.Admin.Controllers
             options.DisplayPageCountAndCurrentLocation = true;
             ViewBag.Options = options;
             var vehicles = db.Vehicles.Include(v => v.Customer).OrderByDescending(v => v.VehicleId);
-            ViewBag.Total = vehicles.Count<Vehicle>();
-            return View(vehicles.ToPagedList(page, 3));
+            ViewBag.ShowPagination = vehicles.Count() > RESULT_PER_PAGE ? true : false;
+            return View(vehicles.ToPagedList(page, RESULT_PER_PAGE));
         }
 
         public ActionResult Search()

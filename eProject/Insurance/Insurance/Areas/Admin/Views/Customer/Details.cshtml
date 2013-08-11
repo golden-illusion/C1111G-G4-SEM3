@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    ViewBag.Title = "Customer Detail";
+    ViewBag.Title = "Customer \"" + Model.CustomerName + "\"";
 }
 @section breadcrumbs {
     <li>
@@ -10,11 +10,21 @@
         <i class="icon-angle-right"></i>
     </li>
     <li>
-        <a href="~/Admin/Customer/Details/@Model.CustomerId">Customer Detail</a>
+        <a href="~/Admin/Customer/Details/@Model.CustomerId">Customer "@Model.CustomerName"</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Customer/Details/@Model.CustomerId">Details</a>
     </li>
 }
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
+        <p style="margin: 10px 0px 0px !important;">
+            <a href="@Url.Action("FindById", "Vehicle", new { id = Model.CustomerId })" class="btn btn-primary">Vehicles</a>&nbsp;
+            <a href="@Url.Action("FindById", "CustomerPolicy", new { id = Model.CustomerId })" class="btn btn-primary">Policies</a>&nbsp;
+            <a href="@Url.Action("FindById", "Billing", new { id = Model.CustomerId })" class="btn btn-primary">Billings</a>&nbsp;
+            <a href="@Url.Action("FindById", "Claim", new { id = Model.CustomerId })" class="btn btn-primary">Claims</a>&nbsp;
+        </p>
         <div class="box box-bordered">
             <div class="box-title">
                 <h3><i class="icon-th-list"></i>Customer "@Model.CustomerName"</h3>
@@ -25,36 +35,36 @@
                     <div class="control-group">
                         @Html.LabelFor(model => model.UserName, new { @class = "control-label", @for = "UserName" })
                         <div class="controls">
-                            @Model.UserName
+                            <input type="text" value="@Model.UserName" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.CustomerName, new { @class = "control-label", @for = "CustomerName" })
                         <div class="controls">
-                            @Model.CustomerName
+                            <input type="text" value="@Model.CustomerName" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.CustomerAddress, new { @class = "control-label", @for = "CustomerAddress" })
                         <div class="controls">
-                            @Model.CustomerAddress
+                            <input type="text" value="@Model.CustomerAddress" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.CustomerPhone, new { @class = "control-label", @for = "CustomerPhone" })
                         <div class="controls">
-                            @Model.CustomerPhone
+                            <input type="text" value="@Model.CustomerPhone" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Vehicles</label>
                         <div class="controls">
-                            @Model.Vehicles.Count.ToString()
+                            <input type="text" value="@Model.Vehicles.Count.ToString()" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i> Edit Customer</button>
-                        <button type="button" class="btn"><i class="icon-arrow-left"></i> Back</button>
+                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i>&nbsp;Edit </button>
+                        <button type="button" class="btn" onclick="javascript:location.href='@Url.Action("Index")'"><i class="icon-arrow-left"></i>&nbsp;Back</button>
                     </div>
                 }
             </div>

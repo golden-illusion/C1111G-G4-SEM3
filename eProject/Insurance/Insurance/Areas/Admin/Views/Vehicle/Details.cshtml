@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    ViewBag.Title = "Vehicle Detail";
+    ViewBag.Title = Model.VehicleName + " Detail";
 }
 @section breadcrumbs {
     <li>
@@ -14,7 +14,11 @@
         <i class="icon-angle-right"></i>
     </li>
     <li>
-        <a href="~/Admin/Vehicle/Details/@Model.VehicleId">Vehicle Detail</a>
+        <a href="~/Admin/Vehicle/Details/@Model.VehicleId">@Model.VehicleName</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/Details/@Model.VehicleId">Details</a>
     </li>
 }
 
@@ -30,54 +34,61 @@
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleName, new { @class = "control-label", @for = "VehicleName" })
                         <div class="controls">
-                            @Model.VehicleName
+                            <input type="text" value="@Model.VehicleName" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Customer Name</label>
                         <div class="controls">
-                            @Model.Customer.CustomerName
+                            <input type="text" value="@Model.Customer.CustomerName" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleNumber, new { @class = "control-label", @for = "VehicleNumber" })
                         <div class="controls">
-                            @Model.VehicleNumber
+                            <input type="text" value="@Model.VehicleNumber" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleModel, new { @class = "control-label", @for = "VehicleModel" })
                         <div class="controls">
-                            @Model.VehicleModel
+                            <input type="text" value="@Model.VehicleModel" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleVersion, new { @class = "control-label", @for = "VehicleVersion" })
                         <div class="controls">
-                            @Model.VehicleVersion
+                            <input type="text" value="@Model.VehicleVersion" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleBodyNumber, new { @class = "control-label", @for = "VehicleBodyNumber" })
                         <div class="controls">
-                            @Model.VehicleBodyNumber
+                            <input type="text" value="@Model.VehicleBodyNumber" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleEngineNumber, new { @class = "control-label", @for = "VehicleEngineNumber" })
                         <div class="controls">
-                            @Model.VehicleEngineNumber
+                            <input type="text" value="@Model.VehicleEngineNumber" style="border:none !important;background-color:#fff !important;" disabled="disabled" />
+
                         </div>
                     </div>
                     <div class="control-group">
                         @Html.LabelFor(model => model.VehicleWarranty, new { @class = "control-label", @for = "VehicleWarranty" })
                         <div class="controls">
-                            @Html.DisplayFor(modelItem => Model.VehicleWarranty)
+                            @Html.CheckBoxFor(model => model.VehicleWarranty, new { @class = "icheck-me", data_skin = "square", data_color = "blue", disabled = "disabled" })
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i> Edit Vehicle</button>
-                        <button type="button" class="btn"><i class="icon-arrow-left"></i> Back</button>
+                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i>&nbsp;Edit </button>
+                        <button type="button" class="btn" onclick="javascript:location.href='@Url.Action("Index")'"><i class="icon-arrow-left"></i>&nbsp;Back</button>
                     </div>
                 }
             </div>

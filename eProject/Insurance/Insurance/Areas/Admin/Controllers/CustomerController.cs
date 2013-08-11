@@ -5,9 +5,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Insurance.Areas.Admin.Models;
 using Insurance.Models;
 using PagedList;
 using PagedList.Mvc;
+using WebMatrix.WebData;
 
 namespace Insurance.Areas.Admin.Controllers
 {
@@ -15,7 +17,7 @@ namespace Insurance.Areas.Admin.Controllers
     public class CustomerController : Controller
     {
         private InsuranceContext db = new InsuranceContext();
-
+        private int RESULT_PER_PAGE = 20;
         //
         // GET: /Admin/Customer/
 
@@ -27,8 +29,8 @@ namespace Insurance.Areas.Admin.Controllers
             options.DisplayPageCountAndCurrentLocation = true;
             ViewBag.Options = options;
             var customers = db.Customers.OrderByDescending(c => c.CustomerId);
-            ViewBag.NumberOfCustomer = customers.Count<Customer>();
-            return View(customers.ToPagedList(page, 2));
+            ViewBag.ShowPagination = customers.Count() > RESULT_PER_PAGE ? true : false;
+            return View(customers.ToPagedList(page, RESULT_PER_PAGE));
         }
 
         public ActionResult Search()
@@ -109,22 +111,32 @@ namespace Insurance.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            CustomerEdit custEdit = new CustomerEdit();
+            custEdit.Customer = customer;
+            return View(custEdit);
         }
 
         //
         // POST: /Admin/Customer/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Customer customer)
+        public ActionResult Edit(CustomerEdit customerEdit)
         {
             if (ModelState.IsValid)
             {
+                Customer customer = customerEdit.Customer;
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                var token = WebSecurity.GeneratePasswordResetToken(customer.UserName);
+                var changed = WebSecurity.ResetPassword(token, customerEdit.Password);
+                if (changed)
+                {
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("pwd", "Failed to change customer's password");
             }
-            return View(customer);
+
+            return View(customerEdit);
         }
 
         //

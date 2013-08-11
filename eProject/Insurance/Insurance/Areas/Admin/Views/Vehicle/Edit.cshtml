@@ -1,94 +1,86 @@
 ﻿@model Insurance.Models.Vehicle
 
 @{
-    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = Model.VehicleName + " Detail";
+}
+@section breadcrumbs {
+    <li>
+        <a href="~/Admin/Customer/">Customer</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/">Vehicle</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/Details/@Model.VehicleId">@Model.VehicleName</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Vehicle/Edit/@Model.VehicleId">Edit</a>
+    </li>
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Vehicle</legend>
-
-        @Html.HiddenFor(model => model.VehicleId)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleName)
+<div class="row-fluid">
+    <div class="span8">
+        <div class="box box-bordered box-color">
+            <div class="box-title">
+                <h3><i class="icon-th-list"></i>Vehicle "@Model.VehicleName"</h3>
+            </div>
+            <div class="box-content nopadding">
+                @using (Html.BeginForm("Edit", "Vehicle", FormMethod.Post, new { @class = "form-horizontal form-bordered form-validate", id = "test" }))
+                {
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleName, new { @class = "control-label", @for = "VehicleName" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.VehicleName, new { @class = "input-xlarge", data_rule_required = "true" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleNumber, new { @class = "control-label", @for = "VehicleNumber" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.VehicleNumber, new { @class = "input-xlarge", data_rule_required = "true" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleModel, new { @class = "control-label", @for = "VehicleModel" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.VehicleModel, new { @class = "input-xlarge", data_rule_required = "true" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleVersion, new { @class = "control-label", @for = "VehicleVersion" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.VehicleVersion, new { @class = "input-xlarge", data_rule_required = "true", data_rule_digits = "true" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleBodyNumber, new { @class = "control-label", @for = "VehicleBodyNumber" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.VehicleBodyNumber, new { @class = "input-xlarge", data_rule_required = "true" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleEngineNumber, new { @class = "control-label", @for = "VehicleEngineNumber" })
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.VehicleEngineNumber, new { @class = "input-xlarge", data_rule_required = "true" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.VehicleWarranty, new { @class = "control-label", @for = "VehicleWarranty" })
+                        <div class="controls">
+                            @Html.CheckBoxFor(model => model.VehicleWarranty, new { @class = "icheck-me", data_skin = "square", data_color = "blue" })
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        @Html.HiddenFor(model => model.VehicleId)
+                        @Html.HiddenFor(model => model.CustomerId)
+                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i>&nbsp;Edit </button>
+                        <button type="button" class="btn" onclick="javascript:location.href='@Url.Action("Index")'"><i class="icon-undo"></i>&nbsp;Cancel</button>
+                    </div>
+                }
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleName)
-            @Html.ValidationMessageFor(model => model.VehicleName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleNumber)
-            @Html.ValidationMessageFor(model => model.VehicleNumber)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleModel)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleModel)
-            @Html.ValidationMessageFor(model => model.VehicleModel)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleVersion)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleVersion)
-            @Html.ValidationMessageFor(model => model.VehicleVersion)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleBodyNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleBodyNumber)
-            @Html.ValidationMessageFor(model => model.VehicleBodyNumber)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleEngineNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleEngineNumber)
-            @Html.ValidationMessageFor(model => model.VehicleEngineNumber)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleWarranty)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleWarranty)
-            @Html.ValidationMessageFor(model => model.VehicleWarranty)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CustomerId, "Customer")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("CustomerId", String.Empty)
-            @Html.ValidationMessageFor(model => model.CustomerId)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

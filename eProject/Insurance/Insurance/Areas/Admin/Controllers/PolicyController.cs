@@ -30,7 +30,7 @@ namespace Insurance.Areas.Admin.Controllers
             Policy policy = db.Policies.Find(id);
             if (policy == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(policy);
         }
@@ -51,11 +51,16 @@ namespace Insurance.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Policies.Add(policy);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var plc = db.Policies.FirstOrDefault(p => p.PolicyType.Equals(policy.PolicyType));
+                if (plc == null)
+                {
+                    db.Policies.Add(policy);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                string error = policy.PolicyType + " exists.";
+                ModelState.AddModelError("error", error);
             }
-
             return View(policy);
         }
 

@@ -16,7 +16,7 @@
     </li>
 }
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
         <div class="box box-bordered">
             <div class="box-title">
                 <h3><i class="icon-search"></i>Search</h3>
@@ -97,23 +97,10 @@
                                     @Html.DisplayFor(modelItem => item.VehicleVersion)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.VehicleWarranty)
+                                    @Html.CheckBoxFor(modelItem => item.VehicleWarranty, new { @class = "icheck-me", data_skin = "square", data_color = "blue", disabled = "disabled" })
                                 </td>
                                 <td>
-                                    <div class="btn-group">
-                                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><i class="icon-cog"></i>&nbsp;Action <span class="caret"></span></a>
-                                        <ul class="dropdown-menu dropdown-primary">
-                                            <li>
-                                                @Html.ActionLink("Details", "Details", new { id = item.VehicleId })
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.VehicleId })
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("Delete", "Delete", new { id = item.VehicleId })
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a href="@Url.Action("Edit", new { id = item.VehicleId })" class="btn btn-orange"><i class='icon-edit'></i></a>
                                 </td>
                             </tr>
                         }
@@ -122,7 +109,7 @@
                 </table>
 
             </div>
-            @if ((int)ViewBag.Total > 1)
+            @if ((bool)ViewBag.ShowPagination)
             {
                 <div class="table-pagination">
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), (PagedListRenderOptions)ViewBag.Options)

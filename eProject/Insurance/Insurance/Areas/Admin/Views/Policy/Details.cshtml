@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    ViewBag.Title = "Policy Detail";
+    ViewBag.Title = Model.PolicyType + " Policy";
 }
 @section breadcrumbs {
     <li>
@@ -10,11 +10,15 @@
         <i class="icon-angle-right"></i>
     </li>
     <li>
-        <a href="~/Admin/Policy/Details/@Model.PolicyId">Policy Detail</a>
+        <a href="~/Admin/Policy/Details/@Model.PolicyId">@Model.PolicyType</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="~/Admin/Policy/Details/@Model.PolicyId">Details</a>
     </li>
 }
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
         <div class="box box-bordered">
             <div class="box-title">
                 <h3><i class="icon-th-list"></i>Policy "@Model.PolicyType"</h3>
@@ -48,8 +52,8 @@
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i> Edit Policy</button>
-                        <button type="button" class="btn"><i class="icon-arrow-left"></i> Back</button>
+                        <button type="submit" class="btn btn-primary"><i class="icon-edit"></i> Edit </button>
+                        <button type="button" class="btn" onclick="javascript:location.href='@Url.Action("Index")'"><i class="icon-arrow-left"></i> Back</button>
                     </div>
                 }
             </div>

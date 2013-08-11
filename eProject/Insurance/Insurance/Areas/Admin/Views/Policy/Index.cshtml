@@ -10,7 +10,13 @@
     </li>
 }
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
+        @using (Html.BeginForm("Create", "Policy", FormMethod.Get))
+        {
+            <p style="margin: 10px 0px 0px !important;">
+                <button class="btn btn-primary" type="submit"><i class="icon-plus-sign"></i>&nbsp;Create</button>
+            </p>
+        }
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3>
@@ -33,19 +39,17 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>1</td>
+                                <td>@item.PolicyId</td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.PolicyType)
+                                    @Html.ActionLink(item.PolicyType, "Details", new { id = item.PolicyId })
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PolicyDuration) Days
                                 </td>
-                                <td>$@Html.DisplayFor(modelItem => item.PolicyPrice)
+                                <td>@Html.DisplayFor(modelItem => item.PolicyPrice)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.PolicyId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.PolicyId }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.PolicyId })
+                                    <a href="@Url.Action("Edit", new { id = item.PolicyId })" class="btn btn-orange"><i class='icon-edit'></i></a>
                                 </td>
                             </tr>
                         }
@@ -57,10 +61,4 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Create", "Policy", FormMethod.Get))
-{
-    <p>
-    <button class="btn btn-primary" type="submit"><i class="icon-plus-sign"></i> Create</button>
-        </p>
-}
 

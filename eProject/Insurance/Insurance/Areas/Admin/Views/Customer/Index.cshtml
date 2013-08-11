@@ -12,7 +12,7 @@
     </li>
 }
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
         <div class="box box-bordered">
             <div class="box-title">
                 <h3><i class="icon-search"></i>Search</h3>
@@ -48,7 +48,7 @@
     </div>
 </div>
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
         <div class="box box-color box-bordered">
             <div class="box-title">
                 <h3>
@@ -74,42 +74,17 @@
                             <tr>
                                 <td>@item.CustomerId</td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
+                                    @Html.ActionLink(item.UserName, "Details", new { id = item.CustomerId })
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                    @Html.ActionLink(item.CustomerName, "Details", new { id = item.CustomerId })
                                 </td>
                                 <td>@Html.DisplayFor(modelItem => item.CustomerAddress)
                                 </td>
                                 <td>@Html.DisplayFor(modelItem => item.CustomerPhone)
                                 </td>
                                 <td>
-                                    <div class="btn-group">
-                                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><i class="icon-cog"></i>&nbsp;Action <span class="caret"></span></a>
-                                        <ul class="dropdown-menu dropdown-primary">
-                                            <li>
-                                                @Html.ActionLink("Details", "Details", new { id = item.CustomerId })
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId })
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("List Vehicles", "FindById", "Vehicle", new { id = item.CustomerId }, null)
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("List Policies", "FindById", "CustomerPolicy", new { id = item.CustomerId }, null)
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("List Billings", "FindById", "Bill", new { id = item.CustomerId }, null)
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("List Claims", "FindById", "Claim", new { id = item.CustomerId }, null)
-                                            </li>
-                                            <li>
-                                                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId })
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a href="@Url.Action("Edit", new { id = item.CustomerId })" class="btn btn-orange"><i class='icon-edit'></i></a>
                                 </td>
                             </tr>
                         }
@@ -118,7 +93,7 @@
                 </table>
 
             </div>
-            @if ((int)ViewBag.NumberOfCustomer > 1)
+            @if ((bool)ViewBag.ShowPagination)
             {
                 <div class="table-pagination">
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), (PagedListRenderOptions)ViewBag.Options)
